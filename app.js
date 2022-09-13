@@ -328,7 +328,6 @@ function getRandomSafeSpot() {
       //You're logged out.
     }
   })
-  const auth = getAuth();
   signInAnonymously(auth)
     .catch((error) => {
       const errorCode = error.code;
