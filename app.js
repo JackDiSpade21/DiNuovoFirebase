@@ -295,7 +295,8 @@ function getRandomSafeSpot() {
 
   }
 
-  firebase.auth().onAuthStateChanged((user) => {
+   const auth = getAuth();
+   onAuthStateChanged(auth, (user) => {
     console.log(user)
     if (user) {
       //You're logged in!
@@ -327,13 +328,12 @@ function getRandomSafeSpot() {
       //You're logged out.
     }
   })
-
-  firebase.auth().signInAnonymously().catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-    console.log(errorCode, errorMessage);
-  });
-
-
+  const auth = getAuth();
+  signInAnonymously(auth)
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+    });
+  
 })();
